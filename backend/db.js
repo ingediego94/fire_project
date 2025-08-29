@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const sql = require("mssql"); //To connect a SQL Server Database
+const db = require("mssql"); //To connect a SQL Server Database
 
 const config = {
   user: process.env.DB_USER,
@@ -14,7 +14,8 @@ const config = {
   },
 };
 
-sql
-  .connect(config)
+db.connect(config)
   .then(() => console.log("✅ Connection stablished successfully."))
   .catch((err) => console.error("❌ Error with the connection:", err));
+
+module.exports = db;
